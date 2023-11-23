@@ -64,18 +64,19 @@ int findd(int r)
 void Kruskal(int numNodes)
 {
     sort(edges.begin(), edges.end()); // sorted the edges based on their weight
-    int sum = 0, numEdge=0;
+    int sum = 0, numEdge=0, selectedEdge=0;
     for(int i=0; i<edges.size(); i++)
     {
         int u = findd(edges[i].u); // finding the parent of u
         int v = findd(edges[i].v); // finding the parent of v
         if(u != v)
         {
-            //cout << "Selected Edge " << i+1 << ": ";
-            //cout << u << " " << v << "\n";
+            cout << "Selected Edge " << selectedEdge + 1 << ": ";
+            cout << edges[i].u << " " << edges[i].v << "\n";
+            selectedEdge++;
             parent[u] = v;
             sum += edges[i].w; // adding the minimum weight of nodes
-            //numEdge+=1;
+            numEdge+=1;
             if(numEdge == numNodes - 1)
             {
                 break;
